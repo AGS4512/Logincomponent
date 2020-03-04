@@ -107,31 +107,40 @@ button.GOOGLE div {
   background-color: #0073b1 !important;
   width: 20vw;
   height: 43px;
-  content: "Email address: ";
+ 
   margin-bottom:  10px;
-}   .TwitterLogin rect{
+}   
+
+.TwitterLogin rect{
     background-color:#0073b1 !important;
     fill:#0073b1 !important;
     border-radius: 25px !important;
     stroke:#0073b1 !important;
     height: 43px !important;
+    display: none;
   }
-  
+
+
   .TwitterLogin path{
    
     fill:#EAEBED !important;
     border-radius: 25px !important;
     height: 43px !important;
-    
-  }
 
-.TwitterLogin{
-  background-color:#0073b1 !important;
-  width: 20vw;
-  
-  content: "Email address: "
-    
+    display: none;
   }
+  div#TwitterLogin_main:before {
+    content: "LOGIN WITH TWITTER";
+    position: absolute;
+    /* margin: 10px; */
+    /* text-align: center !important; */
+    left: 30%;
+    /* top: 5%; */
+    margin-top: 10px;
+    font-size: 1vw !important;
+    font-weight: 600 !important;
+    color: #eaebed;
+}
 /* Linkedin  */
 
 .Linkedin {
@@ -146,7 +155,7 @@ button.GOOGLE div {
 }
 
 .btn-linkedin::before {
-  content: "Login with Linkedin";
+  content: "LOGIN WITH LINKEDIN";
   font-size: 0.9vw !important;
   color: #eaebed;
   font-family: Helvetica, sans-serif !important;
