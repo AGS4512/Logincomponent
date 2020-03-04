@@ -100,6 +100,21 @@ const Login = (props) => {
   const responseInstagram = response => {
     console.log(response)
   }
+  const tweonSuccess = (response) => {
+    console.log(response)
+
+    const token = response.headers.get('x-auth-token');
+    response.json().then(user => {
+      console.log(user)
+      if (token) {
+        this.setState({ isAuthenticated: true, user: user, token: token });
+      }
+    });
+  };
+
+  const tweonFailed = (error) => {
+    alert(error);
+  };
 
   const CONSUMER_KEY = "PyHxgJuyORZqhDiuKAne8LcxT"
   const CONSUMER_SECRET = "RBqOgWJfflgk2GLGmKtHFnHituqvf3vROPfAqzOPpfKficIrI9"
@@ -154,6 +169,7 @@ const Login = (props) => {
     />
   }
 
+
   function showLin() {
     return <LinkedIn
       // clientId="77mh7zgv7lrcb6"
@@ -170,15 +186,15 @@ const Login = (props) => {
 
 
   function showTwe() {
-    return <TwitterLogin
-      authCallback={authHandlerTwitter}
-      consumerKey={CONSUMER_KEY}
-      consumerSecret={CONSUMER_SECRET}
-      callbackUrl={CALLBACK_URL}
-      buttonTheme="dark"
-      className="TwitterLogin"
-    />
-
+    return  <div       id ="TwitterLogin_main"> <TwitterLogin loginUrl="http://localhost:4000/api/v1/auth/twitter"
+    onFailure={tweonFailed} onSuccess={tweonSuccess}
+    buttonTheme='dark'
+    className="TwitterLogin"
+    consumerKey={CONSUMER_KEY}
+    consumerSecret={CONSUMER_SECRET}
+    callbackUrl={CALLBACK_URL}
+    requestTokenUrl="http://localhost:4000/api/v1/auth/twitter/reverse"    />
+</div>
   }
 
   function showpaypal() {
@@ -217,7 +233,7 @@ const Login = (props) => {
         <div style={{ marginTop: '90px' }} >
           
           <div className="centerlogin">
-            <Card className="flex-container" style={{ backgroundColor: '#FBF9FA', width: '23vw', display: 'flex', flexFlow: 'column', alignItems: 'center', borderRadius: '25px' }}>
+            <div className="flex-container" style={{ backgroundColor: '#FBF9FA', width: '23vw', display: 'flex', flexFlow: 'column', alignItems: 'center', borderRadius: '25px' }}>
               {
                 types.includes("GMAIL") ? showGmail() : null
 
@@ -247,10 +263,7 @@ const Login = (props) => {
                 types.includes("LINKEDIN") ? showLin() : null
 
               }
-              {
-                types.includes("Paypal") ? showpaypal() : null
-
-              }
+        
               {
                 types.includes("Instagram") ? showInstagram() : null
 
@@ -258,7 +271,7 @@ const Login = (props) => {
           
 
 
-            </Card>
+            </div>
           </div>
         </div>
      

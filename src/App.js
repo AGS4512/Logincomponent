@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './Login'
- class App extends Component {
-  render() {
+const App =()=>{
+
     const typeOfLogin = [
       "GMAIL",
       "FACEBOOK",
@@ -24,6 +24,6 @@ import Login from './Login'
       </div>
     )
   }
-}
+
 
 export default App
