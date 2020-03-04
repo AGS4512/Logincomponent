@@ -173,9 +173,11 @@ button.GOOGLE div {
   color: #fff;
   background-color: #0073b1 !important;
   border-color: #0073b1 !important;
-  height: 43px;
-  padding: 0px;
+ 
   width: 20vw;
+  margin-bottom: 10px;
+  height: 4.5vh;
+  
 }
 
 /* Instagram */
